@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
 	<v-container fluid fill-height>
 		<v-layout align-center justify-center>
@@ -22,13 +23,13 @@
 							></v-text-field>
 
 							<v-text-field
-							  prepend-icon="lock"
-							  name="password"
-							  label="Password"
-							  type="password"
-							  v-model="password"
-							  :counter="6"
-							  :rules="passwordRules"
+								prepend-icon="lock"
+								name="password"
+								label="Password"
+								type="password"
+								v-model="password"
+								:counter="6"
+								:rules="passwordRules"
 							></v-text-field>
 							<v-text-field
 									prepend-icon="lock"

@@ -24,9 +24,11 @@
     <v-toolbar app dark color="primary">
       <v-toolbar-side-icon
       @click="drawer=!drawer"
-      class="hidden-md-and-up "
+      class="hidden-md-and-up"
       ></v-toolbar-side-icon>
-      <v-toolbar-title>add application</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link to="/" tag="span" class="pointer">add application</router-link>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn
@@ -56,9 +58,14 @@ export default {
               {title: 'Registration',icon: 'face',url: '/registration'},
               {title: 'Orders',icon: 'bookmark_border',url: '/orders'},
               {title: 'New ad',icon: 'note_add',url: '/new'},
-              {title: 'My ads',icon: 'list',url: '/list'}
+              {title: 'My ads',icon: 'list',url: '/list'},
           ]
       }
   }
 }
 </script>
+<style scoped>
+  .pointer {
+    cursor: pointer;
+  }
+</style>
