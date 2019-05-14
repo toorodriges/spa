@@ -5,13 +5,13 @@
 				<v-card>
 					<v-layout row>
 						<v-flex xs12>
-							<v-card-media
-									src="https://cdn.vuetifyjs.com/images/carousel/sky.jpg"
+							<v-img
+									:src="ad.imageSrc"
 									height="300px"
-							></v-card-media>
+							></v-img>
 							<v-card-text>
-								<h2 class="text--primary">Title</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, ipsum.</p>
+								<h2 class="text--primary">{{ad.title}}</h2>
+								<p>{{ad.description}}</p>
 							</v-card-text>
 							<v-card-actions>
 								<v-spacer></v-spacer>
@@ -30,8 +30,12 @@
 </template>
 <script>
     export default {
-        data () {
-            return{}
-        }
+        props: ['id'],
+        computed: {
+            ad() {
+                const id = this.id
+                return this.$store.getters.adById(id)
+            }
+				}
     }
 </script>

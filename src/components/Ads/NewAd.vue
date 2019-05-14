@@ -81,9 +81,9 @@
                         title: this.title,
                         description: this.description,
                         promo: this.promo,
+												imageSrc: 'https://webformyself.com/hivideo/images/js/vue.jpg'
                     }
-                    console.log(ad)
-
+                    this.$store.dispatch('createAd',ad)
                 }
             }
         }
