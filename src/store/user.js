@@ -1,7 +1,7 @@
-import  * as fb from 'firebase'
+import * as fb from 'firebase'
 
 class User {
-    constructor (id) {
+    constructor(id) {
         this.id = id
     }
 }
@@ -11,20 +11,28 @@ export default {
         user: null
     },
     mutations: {
-        setUser (state, payload) {
+        setUser(state, payload) {
             state.user = payload
         }
     },
     actions: {
-        registerUser ({commit}, {email, password}) {
-            fb.auth().createUserWithEmailAndPassword(email, password)
-                .then(user => {
-                    commit('setUser', new User(user.uid) )
-                })
+        async registerUser({commit}, {email, password}) {
+            commit('clearError');
+            commit('setLoading', true);
+
+            try {
+                const user = await fb.auth().createUserWithEmailAndPassword(email, password)
+                commit('setUser', new User(user.uid));
+                commit('setLoading', false);
+            } catch (error) {
+                commit('setLoading', false);
+                commit('setError', error.message);
+                throw error
+            }
         }
     },
     getters: {
-        user (state) {
+        user(state) {
             return state.user
         }
     }
