@@ -21,6 +21,11 @@ new Vue({
             messagingSenderId: '582476523564',
             appId: '1:582476523564:web:8ab25de9c6254a0c'
         })
+      fb.auth().onAuthStateChanged(user => {
+        if(user) {
+          this.$store.dispatch('autoLoginUser', user)
+        }
+      })
     }
 }).$mount('#app')
 

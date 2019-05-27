@@ -32,24 +32,25 @@
 								:rules="passwordRules"
 							></v-text-field>
 							<v-text-field
-									prepend-icon="lock"
-									name="confirm-password"
-									label="Confirm Password"
-									type="password"
-									v-model="confirmPassword"
-									:counter="6"
-									:rules="confirmPasswordRules"
+								prepend-icon="lock"
+								name="confirm-password"
+								label="Confirm Password"
+								type="password"
+								v-model="confirmPassword"
+								:counter="6"
+								:rules="confirmPasswordRules"
 							></v-text-field>
 						</v-form>
 					</v-card-text>
 					<v-card-actions>
 						<v-spacer></v-spacer>
 						<v-btn
-								color="primary"
-								@click="onSubmit"
-								:loading="loading"
-								:disabled="!valid || loading"
-						>create account</v-btn>
+							color="primary"
+							@click="onSubmit"
+							:loading="loading"
+							:disabled="!valid || loading"
+						>create account
+						</v-btn>
 					</v-card-actions>
 				</v-card>
 			</v-flex>
@@ -57,48 +58,49 @@
 	</v-container>
 </template>
 <script>
-    export default {
-        data () {
-            return{
-                email: '',
-                password: '',
-                confirmPassword: '',
-                valid: false,
-                emailRules: [
-                    v => !!v || 'E-mail is required',
-                    v => /.+@.+/.test(v) || 'E-mail must be valid'
-                ],
-                passwordRules: [
-                    v => !!v || 'Password is required',
-                    v => (v && v.length >= 6) || 'Password must be equal or more than 6 characters'
-                ],
-                confirmPasswordRules: [
-                    v => !!v || 'Password is required',
-					v => v === this.password || 'Password should match'
-				]
-            }
-        },
-				computed: {
-            loading () {
-                return this.$store.getters.loading
-						}
-				},
-        methods: {
-            onSubmit () {
-                if (this.$refs.form.validate()) {
-                    const user = {
-                        email: this.email,
-                        password: this.password
-                    }
+  export default {
+    data() {
+      return {
+        email: '',
+        password: '',
+        confirmPassword: '',
+        valid: false,
+        emailRules: [
+          v => !!v || 'E-mail is required',
+          v => /.+@.+/.test(v) || 'E-mail must be valid'
+        ],
+        passwordRules: [
+          v => !!v || 'Password is required',
+          v => (v && v.length >= 6) || 'Password must be equal or more than 6 characters'
+        ],
+        confirmPasswordRules: [
+          v => !!v || 'Password is required',
+          v => v === this.password || 'Password should match'
+        ]
+      }
+    },
+    computed: {
+      loading() {
+        return this.$store.getters.loading
+      }
+    },
+    methods: {
+      onSubmit() {
+        if (this.$refs.form.validate()) {
+          const user = {
+            email: this.email,
+            password: this.password
+          }
 
-                    this.$store.dispatch('registerUser', user)
-												.then(() => {
-														// eslint-disable-next-line no-mixed-spaces-and-tabs
-												    this.$router.push('/')
-												})
-                        .catch(() => {})
-                }
-            }
+          this.$store.dispatch('registerUser', user)
+            .then(() => {
+              // eslint-disable-next-line no-mixed-spaces-and-tabs
+              this.$router.push('/')
+            })
+            .catch(() => {
+            })
         }
+      }
     }
+  }
 </script>

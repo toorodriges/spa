@@ -20,23 +20,23 @@
 		<v-container grid-list-lg>
 			<v-layout row wrap>
 				<v-flex
-						xs12
-						sm6
-						md4
+					xs12
+					sm6
+					md4
 					v-for="ad in ads"
 					:key="ad.id"
 				>
 					<v-card>
 						<v-img
-								:src="ad.imageSrc"
-								height="200px"
-								aspect-ratio="2.75"
+							:src="ad.imageSrc"
+							height="200px"
+							aspect-ratio="2.75"
 						></v-img>
 
 						<v-card-title primary-title>
 							<div>
 								<h3 class="headline mb-0">{{ad.title}}</h3>
-								<div> {{ ad.description }} </div>
+								<div> {{ ad.description }}</div>
 							</div>
 						</v-card-title>
 
@@ -54,16 +54,16 @@
 	</div>
 </template>
 <script>
-    export default {
-        computed: {
-            promoAds() {
-                return this.$store.getters.promoAds
-						},
-            ads() {
-                return this.$store.getters.ads
-            }
-				}
+  export default {
+    computed: {
+      promoAds() {
+        return this.$store.getters.promoAds
+      },
+      ads() {
+        return this.$store.getters.ads
+      }
     }
+  }
 </script>
 
 <style scoped>

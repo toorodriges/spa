@@ -81,7 +81,8 @@
                             // eslint-disable-next-line no-mixed-spaces-and-tabs
                             this.$router.push('/')
                         })
-                        .catch(() => {})
+                      .catch(() => {
+                      })
                 }
             }
         }
